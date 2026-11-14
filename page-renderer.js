@@ -71,6 +71,7 @@
     const next = CALENDAR_EVENTS.find((event) => event.end >= today);
     return next ? (next.start < today ? today : next.start) : today;
   };
+  const calendarStartDate = () => CALENDAR_EVENTS.reduce((earliest, event) => !earliest || event.start < earliest ? event.start : earliest, "");
   const firstMarkedDay = (year, month) => {
     const monthStart = `${year}-${String(month + 1).padStart(2, "0")}-01`;
     const monthEnd = toIso(new Date(year, month + 1, 0, 12));
@@ -107,11 +108,13 @@
       return `<button type="button" class="calendar-day${isCurrentMonth ? "" : " is-outside"}${iso === window.calendarSelectedDate ? " is-selected" : ""}${iso === toIso(new Date()) ? " is-today" : ""}" data-calendar-day="${iso}" aria-label="${esc(accessible)}" aria-pressed="${iso === window.calendarSelectedDate}"><span>${day.getDate()}</span><span class="calendar-dots">${dots}</span></button>`;
     }).join("");
     const chosen = eventsForDay(window.calendarSelectedDate);
+    const startDate = calendarStartDate();
     const selectedDate = dateFormat(dateOnly(window.calendarSelectedDate), language, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
     const empty = label(language, "No sample events on this day. Choose a marked date or browse another month.", "ఈ రోజున నమూనా కార్యక్రమాలు లేవు. గుర్తించిన తేదీని ఎంచుకోండి లేదా మరో నెల చూడండి.");
     return `<div class="calendar-note"><span aria-hidden="true">✳</span><p><strong>${esc(label(language, "Illustrative sample schedule", "నమూనా కార్యక్రమాల షెడ్యూల్"))}</strong> · ${esc(label(language, "Please confirm dates with the Peetham before making plans.", "ప్రయాణ ప్రణాళికకు ముందు పీఠంతో తేదీలను నిర్ధారించుకోండి."))}</p></div>
       <div class="calendar-layout"><section class="calendar-widget" aria-label="${esc(label(language, "Events calendar", "కార్యక్రమాల క్యాలెండర్"))}">
         <div class="calendar-toolbar"><button type="button" class="calendar-month-step" data-calendar-prev aria-label="${esc(label(language, "Previous month", "మునుపటి నెల"))}">‹</button><h2>${esc(monthLabel)}</h2><button type="button" class="calendar-month-step" data-calendar-next aria-label="${esc(label(language, "Next month", "తదుపరి నెల"))}">›</button></div>
+        <div class="calendar-start-row"><button type="button" class="calendar-start-button" data-calendar-start="${esc(startDate)}">${esc(label(language, "Go to start date", "ప్రారంభ తేదీకి వెళ్లండి"))}</button></div>
         <div class="calendar-grid calendar-weekdays">${weekdays.map((day) => `<span>${esc(day)}</span>`).join("")}</div><div class="calendar-grid calendar-days">${cells}</div>
         <div class="calendar-legend"><span><i class="calendar-dot calendar-dot-guru"></i>${esc(label(language, "Guruji & disciples", "గురువుగారు, శిష్యులు"))}</span><span><i class="calendar-dot calendar-dot-gudibadi"></i>${esc(label(language, "Gudi Badi", "గుడి బడి"))}</span><span><i class="calendar-dot calendar-dot-tour"></i>${esc(label(language, "Tours / yatra", "యాత్రలు"))}</span><span><i class="calendar-dot calendar-dot-peetham"></i>${esc(label(language, "Peetham events", "పీఠం కార్యక్రమాలు"))}</span></div>
       </section><section class="calendar-agenda"><p class="eyebrow"><span class="eyebrow-line"></span>${esc(label(language, "Selected day", "ఎంచుకున్న రోజు"))}</p><h2>${esc(selectedDate)}</h2><div class="calendar-agenda-list">${chosen.length ? chosen.map((event) => eventCard(event, language)).join("") : `<div class="calendar-empty"><span aria-hidden="true">◷</span><p>${esc(empty)}</p></div>`}</div></section></div>`;
@@ -453,6 +456,13 @@
     }
 
     if (root.querySelector(".calendar-widget")) {
+      root.querySelector("[data-calendar-start]").addEventListener("click", (event) => {
+        const [year, month] = event.currentTarget.dataset.calendarStart.split("-").map(Number);
+        window.calendarSelectedDate = event.currentTarget.dataset.calendarStart;
+        window.calendarViewDate = new Date(year, month - 1, 1, 12);
+        root.innerHTML = window.renderSitePage("calendar", language);
+        wirePageInteractions(root, language);
+      });
       root.querySelector("[data-calendar-prev]").addEventListener("click", () => {
         window.calendarViewDate = new Date(window.calendarViewDate.getFullYear(), window.calendarViewDate.getMonth() - 1, 1, 12);
         window.calendarSelectedDate = firstMarkedDay(window.calendarViewDate.getFullYear(), window.calendarViewDate.getMonth());

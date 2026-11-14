@@ -1217,6 +1217,59 @@ body[data-theme="dark"] .auth-divider { color: #b8c2b6; }
 body[data-theme="dark"] .auth-divider::before, body[data-theme="dark"] .auth-divider::after { background: #45564a; }
 body[data-theme="dark"] .google-signin-button { border-color: #59685d; color: #232a25; background: #f8f7f1; }
 body[data-theme="dark"] .google-status { color: #f1c9a9; }
+
+/* Varanasi-inspired photographic ambience: the ghats sit behind the page content. */
+:root {
+  --green: #542a31;
+  --green-deep: #341b23;
+  --green-mid: #75434a;
+  --green-soft: #f2e8dd;
+  --gold: #bd772e;
+  --gold-light: #e7bd74;
+  --ink: #2e2421;
+  --muted: #74665e;
+  --cream: #f8f0e4;
+  --paper: #fffaf2;
+  --line: #e8d9c7;
+}
+body:not([data-theme="dark"]) {
+  background-color: #f8f0e4;
+  background-image: linear-gradient(rgba(252,248,240,.79), rgba(252,248,240,.84)), url("assets/varanasi-aarti.webp");
+  background-attachment: fixed;
+  background-position: center, center 42%;
+  background-size: cover;
+}
+.site-header { background: rgba(255,250,242,.94); border-bottom-color: rgba(99,55,46,.12); }
+.hero { background-color: #46252c; }
+.hero::before {
+  background: linear-gradient(105deg, rgba(57,27,34,.94) 0%, rgba(74,39,41,.84) 53%, rgba(53,39,34,.68) 100%), url("assets/varanasi-aarti.webp") center 52% / cover;
+}
+.feature-section { background: linear-gradient(120deg, #552a32, #70403d 56%, #4b2b30); }
+.feature-section::before { background: radial-gradient(circle at 75% 40%, rgba(226,180,105,.2), transparent 38%), linear-gradient(100deg, rgba(42,20,26,.2), transparent); }
+.closing-banner { background: linear-gradient(120deg, #48262e, #6b3b3c 55%, #4f2b30); }
+.today-band { background: rgba(249,242,230,.73); border-color: rgba(124,88,58,.16); backdrop-filter: blur(3px); }
+.teachings-section { background: rgba(248,240,228,.5); }
+.events-preview-section { background: rgba(248,240,228,.58); }
+.site-footer { background: rgba(243,233,218,.94); }
+.update-feature { background: linear-gradient(145deg, #542a31, #70403d); border-color: #542a31; }
+.update-feature:hover { border-color: #84534b; }
+body[data-theme="dark"] {
+  background-color: #171c1d;
+  background-image: linear-gradient(rgba(21,25,27,.82), rgba(21,25,27,.88)), url("assets/varanasi-blue-hour.webp");
+  background-attachment: fixed;
+  background-position: center, center 42%;
+  background-size: cover;
+}
+body[data-theme="dark"] .hero::before {
+  background: linear-gradient(105deg, rgba(30,23,29,.94) 0%, rgba(43,28,32,.88) 53%, rgba(31,29,30,.78) 100%), url("assets/varanasi-blue-hour.webp") center 52% / cover;
+}
+body[data-theme="dark"] .feature-section { background: linear-gradient(120deg, #34232a, #443039 56%, #30262b); }
+body[data-theme="dark"] .closing-banner { background: linear-gradient(120deg, #302229, #453036 55%, #34252b); }
+body[data-theme="dark"] .today-band,
+body[data-theme="dark"] .teachings-section,
+body[data-theme="dark"] .events-preview-section,
+body[data-theme="dark"] .site-footer { background: rgba(25,31,31,.9); }
+body[data-theme="dark"] .update-feature { background: linear-gradient(145deg, #34232a, #443039); border-color: #57414a; }
 @media (max-width: 720px) {
   .event-preview-card { min-height: 0; gap: 14px; padding: 15px 15px 15px 17px; }
   .event-date-block { flex-basis: 76px; }
@@ -1266,3 +1319,80 @@ body[data-theme="dark"] .google-status { color: #f1c9a9; }
   .hero-feature-card { right: 7px; bottom: 7px; left: 7px; padding: 9px 10px; }
   .hero-feature-card strong { font-size: 15px; }
 }
+
+/* Keep the dark palette aligned with the blue-hour Varanasi image, without green card surfaces. */
+body[data-theme="dark"] {
+  --cream: #24222a;
+  --paper: #171820;
+  --line: #413b47;
+  --green-soft: #28242d;
+  background-color: #171820;
+}
+body[data-theme="dark"] .site-header { background: rgba(27,25,33,.96); border-color: #403943; }
+body[data-theme="dark"] .today-band,
+body[data-theme="dark"] .teachings-section,
+body[data-theme="dark"] .events-preview-section,
+body[data-theme="dark"] .site-footer { background: rgba(27,25,33,.84); border-color: #403943; }
+body[data-theme="dark"] .update-card:not(.update-feature),
+body[data-theme="dark"] .path-card,
+body[data-theme="dark"] .event-preview-card,
+body[data-theme="dark"] .calendar-widget,
+body[data-theme="dark"] .calendar-event-card,
+body[data-theme="dark"] .event-save-button,
+body[data-theme="dark"] .article-section,
+body[data-theme="dark"] .collection-card,
+body[data-theme="dark"] .collection-search,
+body[data-theme="dark"] .filter-chip,
+body[data-theme="dark"] .search-field,
+body[data-theme="dark"] .archive-panel,
+body[data-theme="dark"] .empty-state,
+body[data-theme="dark"] .access-panel,
+body[data-theme="dark"] .media-panel,
+body[data-theme="dark"] .resource-panel,
+body[data-theme="dark"] .ebook-panel,
+body[data-theme="dark"] .book-detail-panel,
+body[data-theme="dark"] .quiz-question,
+body[data-theme="dark"] .stotra-pdf-card,
+body[data-theme="dark"] .stotra-no-pdf { border-color: #443d49; background: #25222b; }
+body[data-theme="dark"] .path-card-feature { background: #302733; }
+body[data-theme="dark"] .path-icon,
+body[data-theme="dark"] .collection-card-icon,
+body[data-theme="dark"] .access-icon,
+body[data-theme="dark"] .media-play,
+body[data-theme="dark"] .resource-symbol { color: #e3c27f; border-color: #665344; background: #302831; }
+body[data-theme="dark"] .path-card-content small,
+body[data-theme="dark"] .update-description,
+body[data-theme="dark"] .heading-intro,
+body[data-theme="dark"] .today-inner > p,
+body[data-theme="dark"] .article-section p,
+body[data-theme="dark"] .article-section li,
+body[data-theme="dark"] .collection-card-description,
+body[data-theme="dark"] .calendar-event-card p,
+body[data-theme="dark"] .event-preview-copy .event-preview-description,
+body[data-theme="dark"] .event-preview-copy > span:last-child,
+body[data-theme="dark"] .footer-col a,
+body[data-theme="dark"] .footer-bottom { color: #c6bec6; }
+body[data-theme="dark"] .search-dialog { border-color: #443d49; background: #201e26; }
+body[data-theme="dark"] .search-result:hover { border-color: #5b4a53; background: #302832; }
+body[data-theme="dark"] .calendar-empty,
+body[data-theme="dark"] .contact-note,
+body[data-theme="dark"] .calendar-note { border-color: #4b414b; background: #29242d; }
+body[data-theme="dark"] .route-facts { border-color: #433d48; background: #433d48; }
+body[data-theme="dark"] .route-facts > div { background: #25222b; }
+body[data-theme="dark"] .quiz-choice span { border-color: #4c424c; background: #2a252e; }
+body[data-theme="dark"] .quiz-choice input:checked + span { border-color: #b89763; background: #3a3036; }
+body[data-theme="dark"] .event-date-tile,
+body[data-theme="dark"] .event-preview-card .event-date-tile,
+body[data-theme="dark"] .event-preview-card:nth-child(3n + 2) .event-date-tile,
+body[data-theme="dark"] .event-preview-card:nth-child(3n) .event-date-tile { color: #f0dfbf; background: linear-gradient(145deg, #43323c, #302832); border-color: #6b5549; }
+body[data-theme="dark"] .event-preview-card:hover { background: #302832; }
+body[data-theme="dark"] :is(.update-card:not(.update-feature), .path-card, .event-preview-card, .collection-card, .archive-panel, .article-section, .calendar-event-card, .search-result, .quiz-question):hover {
+  border-color: #856646;
+  background-color: #302832;
+  background-image: radial-gradient(ellipse at 86% 8%, rgba(224,183,106,.13), transparent 45%), linear-gradient(140deg, #302832, #26222b);
+}
+.calendar-start-row { display: flex; justify-content: flex-end; margin: -6px 0 13px; }
+.calendar-start-button { min-height: 34px; padding: 7px 12px; border: 1px solid #e2d3bd; border-radius: 999px; color: var(--green); background: rgba(255,250,242,.8); font-size: 10px; font-weight: 700; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+.calendar-start-button:hover { transform: translateY(-1px); border-color: #bc9357; background: #f8ecd8; }
+body[data-theme="dark"] .calendar-start-button { border-color: #65515c; color: #eadcc7; background: #302832; }
+body[data-theme="dark"] .calendar-start-button:hover { border-color: #a98757; background: #3b3038; }
