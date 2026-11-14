@@ -1599,3 +1599,31 @@ body:not([data-theme="dark"]) .portrait-seal {
   background: rgba(91, 43, 51, .94);
   box-shadow: 0 8px 24px rgba(36, 21, 25, .24);
 }
+
+/* Final Varanasi palette pass for the remaining forest-green feature surfaces. */
+.hero-feature-card,
+.hero-slide-dharma .hero-feature-card {
+  border-color: rgba(224, 192, 138, .7);
+  background: linear-gradient(105deg, rgba(74, 36, 43, .96), rgba(74, 36, 43, .84));
+}
+.hero-feature-card:hover,
+.hero-slide-dharma .hero-feature-card:hover { background: linear-gradient(105deg, rgba(92, 47, 53, .98), rgba(76, 39, 46, .93)); }
+.hero-slide-dharma { background: radial-gradient(ellipse at 50% 38%, #d8b175 0%, #8c684d 31%, #58323a 76%); }
+.hero-slide-dharma::after { background: linear-gradient(0deg, rgba(48, 27, 34, .76), rgba(48, 27, 34, .04) 62%); }
+.portrait-frame::after { background: linear-gradient(0deg, rgba(49, 27, 32, .5), transparent 38%), linear-gradient(90deg, rgba(53, 37, 33, .12), transparent 55%); }
+.editorial-card,
+.editorial-feature { background-color: #563039; }
+.editorial-shade { background: linear-gradient(0deg, rgba(49, 27, 33, .88), rgba(49, 27, 33, .04) 76%), linear-gradient(120deg, rgba(84, 47, 46, .12), transparent 68%); }
+.editorial-practice { background: #f4eadd; }
+.editorial-wisdom .editorial-symbol { border-color: #dcc69d; }
+.book-detail-art { background: linear-gradient(150deg, #7a3d36, #452832); }
+body[data-theme="dark"] .hero-feature-card,
+body[data-theme="dark"] .hero-slide-dharma .hero-feature-card { background: linear-gradient(105deg, rgba(39, 31, 38, .97), rgba(48, 37, 44, .91)); }
+body[data-theme="dark"] .hero-feature-card:hover,
+body[data-theme="dark"] .hero-slide-dharma .hero-feature-card:hover { background: linear-gradient(105deg, rgba(60, 43, 52, .98), rgba(48, 37, 44, .95)); }
+body[data-theme="dark"] .editorial-shade { background: linear-gradient(0deg, rgba(32, 25, 32, .92), rgba(38, 29, 36, .12) 76%), linear-gradient(120deg, rgba(74, 48, 52, .13), transparent 68%); }
+body[data-theme="dark"] .book-detail-art { background: linear-gradient(150deg, #704039, #392831); }
+body[data-theme="dark"] .auth-panel,
+body[data-theme="dark"] .account-panel { border-color: #4b414b; background: linear-gradient(145deg, #211e27, #2b242d); }
+body[data-theme="dark"] .auth-form input[type="email"],
+body[data-theme="dark"] .auth-form input[type="password"] { border-color: #514652; background: #19171f; }
