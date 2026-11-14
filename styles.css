@@ -11,9 +11,9 @@
   --cream: #f8f6f0;
   --paper: #fffefa;
   --line: #e8e5dc;
-  --font-sans: "DM Sans", "Noto Serif Telugu", sans-serif;
-  --font-display: "Playfair Display", "Noto Serif Telugu", Georgia, serif;
-  --font-telugu: "Noto Serif Telugu", serif;
+  --font-sans: "DM Sans", "Noto Sans Telugu", sans-serif;
+  --font-display: "Playfair Display", "Noto Sans Telugu", Georgia, serif;
+  --font-telugu: "Noto Sans Telugu", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -1652,3 +1652,112 @@ body[data-theme="dark"] :is(.update-card:not(.update-feature), .path-card, .even
   font-display: block;
 }
 .material-symbols-outlined { font-family: "Google Material Symbols Outlined"; font-weight: 400; font-style: normal; line-height: 1; letter-spacing: normal; white-space: nowrap; word-wrap: normal; direction: ltr; font-feature-settings: "liga"; -webkit-font-feature-settings: "liga"; }
+
+/* Comfortable reading defaults for English and Telugu, including mobile screens. */
+html { font-size: 16px; }
+body {
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+}
+body.lang-te { font-size: 18px; }
+body.lang-te :is([data-i18n], .route-page, .route-page button, .route-page input) {
+  font-family: var(--font-telugu), sans-serif;
+  letter-spacing: 0;
+}
+body.lang-te :is(h1, h2, h3, .update-card h3, .path-card-content strong, .collection-card strong, .search-result strong, .calendar-event-card h3) {
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+body p:not(.eyebrow),
+body li {
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+}
+body.lang-te p:not(.eyebrow),
+body.lang-te li {
+  font-size: 18px !important;
+  line-height: 1.9 !important;
+}
+body small,
+body kbd { font-size: 12px !important; line-height: 1.5; }
+body .announcement-strip p { font-size: 12px !important; line-height: 1.4 !important; }
+body.lang-te .announcement-strip p { font-size: 13px !important; }
+body :is(
+  .announcement-strip, .eyebrow, .brand-copy small, .caption-kicker, .caption-telugu,
+  .hero-stat > span:last-child, .hero-note, .hero-bottom-label, .scroll-cue,
+  .today-date small, .today-date strong, .today-link, .update-type, .update-label,
+  .update-read, .heading-intro, .path-number, .path-card-content small,
+  .teachings-footer .text-link, .editorial-content small, .editorial-card > small,
+  .editorial-content > span, .editorial-card > span:last-child, .event-category,
+  .event-preview-location, .event-preview-copy > span:last-child, .event-date-tile small,
+  .sample-schedule-note, .event-card-meta, .event-card-meta time, .event-venue,
+  .about-image-label, .about-facts span, .footer-col strong, .footer-col a,
+  .footer-signoff small, .footer-bottom, .search-result small, .search-result-type,
+  .search-hint, .route-breadcrumb, .route-facts dt, .route-back, .collection-card-tag,
+  .collection-card-description, .filter-label, .calendar-weekdays > span,
+  .calendar-legend > span, .calendar-note p, .calendar-empty p, .calendar-empty small,
+  .pdf-direct-link, .quiz-choice span, .quiz-question legend > span
+) {
+  font-size: 12px !important;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+body :is(
+  .hero-description, .update-description, .path-card-content small,
+  .feature-copy > p:not(.eyebrow), .about-copy > p:not(.eyebrow), .footer-brand > p,
+  .search-empty, .route-subtitle, .article-section p, .article-section li,
+  .collection-card-description, .access-panel p:not(.eyebrow), .media-panel p,
+  .resource-panel p, .ebook-panel p, .book-detail-panel p, .calendar-event-card p,
+  .calendar-note p, .calendar-empty p, .contact-note p
+) {
+  font-size: 15px !important;
+  line-height: 1.75;
+}
+body.lang-te :is(
+  .hero-description, .update-description, .path-card-content small,
+  .feature-copy > p:not(.eyebrow), .about-copy > p:not(.eyebrow), .footer-brand > p,
+  .search-empty, .route-subtitle, .article-section p, .article-section li,
+  .collection-card-description, .access-panel p:not(.eyebrow), .media-panel p,
+  .resource-panel p, .ebook-panel p, .book-detail-panel p, .calendar-event-card p,
+  .calendar-note p, .calendar-empty p, .contact-note p
+) {
+  font-size: 17px !important;
+  line-height: 1.9;
+}
+body :is(.primary-nav a, .button, .text-link, .language-toggle, .theme-toggle, .filter-chip, .event-save-button, .calendar-start-button) {
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+body.lang-te :is(.primary-nav a, .button, .text-link, .language-toggle, .theme-toggle, .filter-chip, .event-save-button, .calendar-start-button) {
+  font-size: 15px !important;
+}
+body :is(input, textarea, select) { font-size: 16px; line-height: 1.5; }
+body :is(.calendar-day, .calendar-weekdays > span) { font-size: 13px !important; }
+body :is(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid #b8793f;
+  outline-offset: 3px;
+}
+body[data-theme="dark"] :is(
+  .update-description, .heading-intro, .path-card-content small, .about-copy > p:not(.eyebrow),
+  .route-subtitle, .article-section p, .article-section li, .collection-card-description,
+  .calendar-event-card p, .calendar-note p, .calendar-empty p, .footer-col a,
+  .footer-bottom, .search-result small, .search-hint, .sample-schedule-note
+) { color: #d3cbd4; }
+body:not([data-theme="dark"]) :is(
+  .update-description, .heading-intro, .path-card-content small, .about-copy > p:not(.eyebrow),
+  .route-subtitle, .article-section p, .article-section li, .collection-card-description,
+  .calendar-event-card p, .calendar-note p, .calendar-empty p, .footer-col a,
+  .footer-bottom, .search-result small, .search-hint, .sample-schedule-note
+) { color: #5d5b56; }
+body:not([data-theme="dark"]) :is(
+  .brand-copy small, .update-type, .path-number, .route-breadcrumb, .route-facts dt,
+  .collection-card-tag, .event-category, .about-facts span, .footer-col strong
+) { color: #625344; }
+
+@media (max-width: 720px) {
+  body p:not(.eyebrow), body li { font-size: 16px !important; }
+  body.lang-te p:not(.eyebrow), body.lang-te li { font-size: 17px !important; }
+  body :is(.announcement-strip, .caption-kicker, .caption-telugu, .hero-note, .hero-bottom-label, .scroll-cue) { font-size: 11px !important; }
+}
