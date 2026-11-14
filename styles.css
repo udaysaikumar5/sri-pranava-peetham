@@ -1581,3 +1581,15 @@ body[data-theme="dark"] .search-empty { color: #bdb4bf; }
   .search-result small { font-size: 10px; }
   .search-result > span:last-child { width: 28px; height: 28px; }
 }
+
+/* Use the Varanasi warmth in event cards instead of the old green date blocks. */
+.event-preview-card::before { background: linear-gradient(180deg, #d4ae68, #9a5446); }
+body:not([data-theme="dark"]) .event-preview-card .event-date-tile,
+body:not([data-theme="dark"]) .event-preview-card:nth-child(3n + 2) .event-date-tile,
+body:not([data-theme="dark"]) .event-preview-card:nth-child(3n) .event-date-tile {
+  border-color: rgba(213, 181, 119, .68);
+  color: #f7ebd3;
+  background: linear-gradient(145deg, #9d4e34, #69333c);
+  box-shadow: inset 0 0 0 3px rgba(242, 220, 176, .05);
+}
+body:not([data-theme="dark"]) .event-preview-card .event-date-tile small { color: #efd49e; }
