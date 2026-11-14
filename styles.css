@@ -1644,3 +1644,11 @@ body[data-theme="dark"] :is(.update-card:not(.update-feature), .path-card, .even
   background-image: radial-gradient(ellipse at 88% 8%, rgba(213, 161, 91, .22), transparent 48%), linear-gradient(135deg, #49343d, #392b35);
   box-shadow: 0 16px 34px rgba(0, 0, 0, .34), 0 0 0 2px rgba(208, 161, 96, .22);
 }
+@font-face {
+  font-family: "Google Material Symbols Outlined";
+  src: url("assets/fonts/material-symbols-outlined.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+.material-symbols-outlined { display: inline-block; font-family: "Google Material Symbols Outlined"; font-size: 1em; font-weight: 400; font-style: normal; line-height: 1; letter-spacing: normal; white-space: nowrap; word-wrap: normal; direction: ltr; font-feature-settings: "liga"; -webkit-font-feature-settings: "liga"; }

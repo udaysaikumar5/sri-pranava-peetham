@@ -8,6 +8,13 @@
     return String(value);
   };
   const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+  const iconMarkup = (icon, fallback) => {
+    const value = icon || fallback;
+    if (typeof value === "string" && value.startsWith("google:")) {
+      return `<span class="material-symbols-outlined">${esc(value.slice(7))}</span>`;
+    }
+    return esc(value);
+  };
   const normalize = (value) => String(value).toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
   const hrefFor = (slug) => `?page=${encodeURIComponent(slug)}`;
   const categoryNames = {
@@ -28,7 +35,7 @@
     const internalAttributes = item.route ? `data-page="${esc(item.route)}"` : `target="_blank" rel="noreferrer"`;
     const searchContent = ["en", "te"].flatMap((locale) => [text(item.title, locale), text(item.description, locale), text(item.tag, locale)]).concat(item.deity || "").join(" ");
     return `<a class="collection-card" href="${esc(destination)}" ${internalAttributes} data-search-card data-search-text="${esc(normalize(searchContent))}" data-deity="${esc(item.deity || "")}">
-      <span class="collection-card-icon" aria-hidden="true">${esc(item.icon || ["✳", "◉", "ॐ", "✿"][index % 4])}</span>
+      <span class="collection-card-icon" aria-hidden="true">${iconMarkup(item.icon, ["✳", "◉", "ॐ", "✿"][index % 4])}</span>
       <span class="collection-card-tag">${esc(text(item.deity ? (categoryNames[language][item.deity] || item.deity) : item.tag, language))}</span>
       <strong>${esc(text(item.title, language))}</strong>
       <span class="collection-card-description">${esc(text(item.description, language))}</span>
@@ -127,7 +134,7 @@
 
   function dharmaCategoryMarkup(page, language) {
     const category = text(page.title, language);
-    return `<section class="dharma-local-archive"><div class="archive-panel"><span class="archive-panel-icon" aria-hidden="true">${esc(page.icon || "✳")}</span><div class="archive-panel-copy"><span class="collection-card-tag">${esc(text(page.group, language))}</span><h2>${esc(label(language, `Browse ${category} topics`, `${category} అంశాలను చూడండి`))}</h2><p>${esc(label(language, "These topic links stay inside this local site. The original archive is not needed for this browse flow.", "ఈ అంశాల లింకులు ఈ స్థానిక వెబ్‌సైట్‌లోనే తెరుచుకుంటాయి."))}<br /><a class="text-link" href="${hrefFor("dharma")}" data-page="dharma">${esc(label(language, "All 29 categories", "29 వర్గాలన్నీ"))}<span aria-hidden="true">→</span></a></p></div></div>${collectionMarkup(page, language)}</section>`;
+    return `<section class="dharma-local-archive"><div class="archive-panel"><span class="archive-panel-icon" aria-hidden="true">${iconMarkup(page.icon, "✳")}</span><div class="archive-panel-copy"><span class="collection-card-tag">${esc(text(page.group, language))}</span><h2>${esc(label(language, `Browse ${category} topics`, `${category} అంశాలను చూడండి`))}</h2><p>${esc(label(language, "These topic links stay inside this local site. The original archive is not needed for this browse flow.", "ఈ అంశాల లింకులు ఈ స్థానిక వెబ్‌సైట్‌లోనే తెరుచుకుంటాయి."))}<br /><a class="text-link" href="${hrefFor("dharma")}" data-page="dharma">${esc(label(language, "All 29 categories", "29 వర్గాలన్నీ"))}<span aria-hidden="true">→</span></a></p></div></div>${collectionMarkup(page, language)}</section>`;
   }
 
   function dharmaTopicMarkup(page, language) {
@@ -135,7 +142,7 @@
     const categoryTitle = text(categoryPage?.title, language) || label(language, "Dharma Sandehalu", "ధర్మ సందేహాలు");
     const otherTopics = (categoryPage?.items || []).filter((item) => item.route !== page.route);
     const related = otherTopics.slice(0, 9);
-    return `<section class="dharma-topic-detail"><div class="archive-panel"><span class="archive-panel-icon" aria-hidden="true">${esc(categoryPage?.icon || "◉")}</span><div class="archive-panel-copy"><span class="collection-card-tag">${esc(categoryTitle)}</span><h2>${esc(label(language, `Explore ${text(page.title, language)}`, `${text(page.title, language)} అంశాన్ని అన్వేషించండి`))}</h2><p>${esc(label(language, `This topic is part of the local ${categoryTitle} guide. Continue with related topics in this collection or return to the full Dharma Sandehalu index.`, `ఈ అంశం స్థానిక ${categoryTitle} మార్గదర్శిలో భాగం. ఈ విభాగంలోని సంబంధిత అంశాలను చూడండి లేదా మొత్తం ధర్మ సందేహాల సూచికకు తిరిగి వెళ్లండి.`))}</p><div class="topic-actions"><a class="button button-dark" href="${hrefFor(page.categoryRoute)}" data-page="${esc(page.categoryRoute)}">${esc(label(language, "Browse this category", "ఈ వర్గాన్ని చూడండి"))}<span aria-hidden="true">↗︎</span></a><a class="text-link" href="${hrefFor("dharma")}" data-page="dharma">${esc(label(language, "All 29 categories", "29 వర్గాలన్నీ"))}<span aria-hidden="true">→</span></a></div></div></div>${related.length ? `<div class="topic-neighbors"><div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span>${esc(label(language, "Continue in this collection", "ఈ సేకరణలో కొనసాగండి"))}</p><h2>${esc(label(language, `More ${categoryTitle} topics`, `${categoryTitle}లో మరిన్ని అంశాలు`))}</h2></div><div class="collection-grid">${related.map((item, index) => cardMarkup(item, language, index)).join("")}</div></div>` : ""}</section>`;
+    return `<section class="dharma-topic-detail"><div class="archive-panel"><span class="archive-panel-icon" aria-hidden="true">${iconMarkup(categoryPage?.icon, "◉")}</span><div class="archive-panel-copy"><span class="collection-card-tag">${esc(categoryTitle)}</span><h2>${esc(label(language, `Explore ${text(page.title, language)}`, `${text(page.title, language)} అంశాన్ని అన్వేషించండి`))}</h2><p>${esc(label(language, `This topic is part of the local ${categoryTitle} guide. Continue with related topics in this collection or return to the full Dharma Sandehalu index.`, `ఈ అంశం స్థానిక ${categoryTitle} మార్గదర్శిలో భాగం. ఈ విభాగంలోని సంబంధిత అంశాలను చూడండి లేదా మొత్తం ధర్మ సందేహాల సూచికకు తిరిగి వెళ్లండి.`))}</p><div class="topic-actions"><a class="button button-dark" href="${hrefFor(page.categoryRoute)}" data-page="${esc(page.categoryRoute)}">${esc(label(language, "Browse this category", "ఈ వర్గాన్ని చూడండి"))}<span aria-hidden="true">↗︎</span></a><a class="text-link" href="${hrefFor("dharma")}" data-page="dharma">${esc(label(language, "All 29 categories", "29 వర్గాలన్నీ"))}<span aria-hidden="true">→</span></a></div></div></div>${related.length ? `<div class="topic-neighbors"><div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span>${esc(label(language, "Continue in this collection", "ఈ సేకరణలో కొనసాగండి"))}</p><h2>${esc(label(language, `More ${categoryTitle} topics`, `${categoryTitle}లో మరిన్ని అంశాలు`))}</h2></div><div class="collection-grid">${related.map((item, index) => cardMarkup(item, language, index)).join("")}</div></div>` : ""}</section>`;
   }
 
   function stotraMarkup(page, language) {
