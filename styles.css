@@ -1396,3 +1396,17 @@ body[data-theme="dark"] :is(.update-card:not(.update-feature), .path-card, .even
 .calendar-start-button:hover { transform: translateY(-1px); border-color: #bc9357; background: #f8ecd8; }
 body[data-theme="dark"] .calendar-start-button { border-color: #65515c; color: #eadcc7; background: #302832; }
 body[data-theme="dark"] .calendar-start-button:hover { border-color: #a98757; background: #3b3038; }
+body[data-theme="dark"] .brand-seal { color: #f0d69f; border-color: #80694e; background: #302832; }
+body[data-theme="dark"] .theme-toggle { color: #f0d69f; border-color: #65515c; background: #302832; }
+body[data-theme="dark"] .theme-toggle:hover { background: #3b3038; }
+body[data-theme="dark"] .portrait-seal { color: #f1d6a5; border-color: rgba(224,192,138,.78); background: rgba(48,40,50,.9); }
+body[data-theme="dark"] .hero-carousel-step,
+body[data-theme="dark"] .hero-carousel-step:hover { color: #f7e8c8; background: rgba(48,40,50,.86); }
+body[data-theme="dark"] .hero-stat { color: #542a31; }
+body[data-theme="dark"] .skip-link { background: #302832; }
+body[data-theme="dark"] .calendar-month-step { border-color: #65515c; background: #302832; }
+body[data-theme="dark"] .calendar-month-step:hover,
+body[data-theme="dark"] .calendar-day:hover { background: #3b3038; }
+body[data-theme="dark"] .calendar-day.is-outside { color: #928a96; }
+body[data-theme="dark"] .calendar-day.is-selected,
+body[data-theme="dark"] .filter-chip.is-active { color: #38252a; }
