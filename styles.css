@@ -1627,3 +1627,20 @@ body[data-theme="dark"] .auth-panel,
 body[data-theme="dark"] .account-panel { border-color: #4b414b; background: linear-gradient(145deg, #211e27, #2b242d); }
 body[data-theme="dark"] .auth-form input[type="email"],
 body[data-theme="dark"] .auth-form input[type="password"] { border-color: #514652; background: #19171f; }
+
+/* Make interactive card highlights visible at a glance in both themes. */
+:is(.update-card:not(.update-feature), .path-card, .event-preview-card, .editorial-card, .collection-card, .archive-panel, .article-section, .calendar-event-card, .search-result, .quiz-question) {
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+:is(.update-card:not(.update-feature), .path-card, .event-preview-card, .editorial-card, .collection-card, .archive-panel, .article-section, .calendar-event-card, .search-result, .quiz-question):is(:hover, :focus-visible, :active) {
+  border-color: #b7734b;
+  background-color: #f3e0c5;
+  background-image: radial-gradient(ellipse at 88% 8%, rgba(223, 170, 95, .34), transparent 46%), linear-gradient(135deg, #f7e8d2, #efd9bd);
+  box-shadow: 0 15px 32px rgba(91, 49, 36, .17), 0 0 0 2px rgba(187, 126, 65, .2);
+}
+body[data-theme="dark"] :is(.update-card:not(.update-feature), .path-card, .event-preview-card, .editorial-card, .collection-card, .archive-panel, .article-section, .calendar-event-card, .search-result, .quiz-question):is(:hover, :focus-visible, :active) {
+  border-color: #d0a160;
+  background-color: #44313b;
+  background-image: radial-gradient(ellipse at 88% 8%, rgba(213, 161, 91, .22), transparent 48%), linear-gradient(135deg, #49343d, #392b35);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .34), 0 0 0 2px rgba(208, 161, 96, .22);
+}
