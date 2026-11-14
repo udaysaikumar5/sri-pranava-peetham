@@ -1593,3 +1593,9 @@ body:not([data-theme="dark"]) .event-preview-card:nth-child(3n) .event-date-tile
   box-shadow: inset 0 0 0 3px rgba(242, 220, 176, .05);
 }
 body:not([data-theme="dark"]) .event-preview-card .event-date-tile small { color: #efd49e; }
+body:not([data-theme="dark"]) .portrait-seal {
+  border-color: rgba(224, 192, 138, .9);
+  color: #f5dfb4;
+  background: rgba(91, 43, 51, .94);
+  box-shadow: 0 8px 24px rgba(36, 21, 25, .24);
+}
